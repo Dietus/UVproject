@@ -6,7 +6,7 @@ def get_time():
     skin_exposure = float(raw_input('What % of your skin is exposed?'))
     uv_index = float(raw_input('What is the current UV index of your city?'))
 
-    time_needed = int((skin_type/(uv_index/40))*(skin_exposure/25))
+    time_needed = int((skin_type/(uv_index/40))/(skin_exposure/25))
     seconds_needed = time_needed % 60
     minutes_needed = (time_needed % 3600)/60
     hours_needed = time_needed/3600
