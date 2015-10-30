@@ -2,7 +2,7 @@ fitzpatrick = {'I': 87.6, 'II': 109.4, 'III': 131.3, 'IV': 197.0, 'V': 262.8, 'V
 
 
 def get_time():
-    skin_type = fitzpatrick[raw_input('What is your Fitzpatrick skin type (I-VI)?')]
+    skin_type = fitzpatrick[raw_input('What is your Fitzpatrick skin type (I-VI)?').upper()]
     skin_exposure = float(raw_input('What % of your skin is exposed?'))
     uv_index = float(raw_input('What is the current UV index of your city?'))
 
