@@ -19,9 +19,33 @@ class Skin(object):
 
 
 def calculate_uv():
-    skin_type = fitzpatrick[raw_input('What is your Fitzpatrick skin type (I-VI)?').upper()]
-    skin_exposure = float(raw_input('What % of your skin is exposed?'))
-    uv_index = float(raw_input('What is the current UV index of your city?'))
+    raw_type = raw_input('What is your Fitzpatrick skin type (I-VI)? ').upper()
+    while raw_type not in fitzpatrick:
+        raw_type = raw_input('Answer not valid. What is your Fitzpatrick skin type (I-VI)? ').upper()
+    skin_type = fitzpatrick[raw_type]
+
+    exposure = False
+    while not exposure:
+        raw_exposure = raw_input('What % of your skin is exposed? ')
+        for i in raw_exposure:
+            if i == '%':
+                raw_exposure = raw_exposure[:len(raw_exposure)-1]
+        try:
+            skin_exposure = float(raw_exposure)
+            exposure = True
+        except ValueError:
+            print 'Answer not valid. Please retry'
+
+    while skin_exposure >= 100:
+        skin_exposure = float(raw_input('Answer not valid. What % of your skin is exposed? '))
+
+    uv = False
+    while not uv:
+        try:
+            uv_index = float(raw_input('What is the current UV index of your city? '))
+            uv = True
+        except ValueError:
+            print 'Answer not valid. Please retry'
 
     user = Skin(skin_type, skin_exposure, uv_index)
 
