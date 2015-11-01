@@ -7,21 +7,18 @@ class Skin(object):
         self.skin_exposure = skin_exposure
         self.uv_index = uv_index
 
-    def time_needed(self):
-        return int((self.skin_type/(self.uv_index/40))/(self.skin_exposure/25))
-
-    def get_time(self):
-        time = int((self.skin_type/(self.uv_index/40))/(self.skin_exposure/25))
+    def get_time(self):  # used to calculate time in sunlight needed to get SDD (Standard Vit D Dose)
+        time = int((self.skin_type / (self.uv_index / 40)) / (self.skin_exposure / 25))
         seconds_needed = time % 60
-        minutes_needed = (time % 3600)/60
-        hours_needed = time/3600
+        minutes_needed = (time % 3600) / 60
+        hours_needed = time / 3600
         print 'You need %s hours %s minutes and %s seconds of sunlight every other day to get your recommended Vit D dose.' % (hours_needed, minutes_needed, seconds_needed)
 
-    def get_burn(self):
-        time = int(4*(self.skin_type/(self.uv_index/40)))
+    def get_burn(self): # used to calculate MED (minimal erythema dose)
+        time = int(4 * (self.skin_type / (self.uv_index / 40)))
         seconds_needed = time % 60
-        minutes_needed = (time % 3600)/60
-        hours_needed = time/3600
+        minutes_needed = (time % 3600) / 60
+        hours_needed = time / 3600
         print 'You need a minimum %s hours %s minutes and %s seconds of sunlight to burn.' % (hours_needed, minutes_needed, seconds_needed)
 
 
@@ -36,7 +33,7 @@ def calculate_uv():
         raw_exposure = raw_input('What % of your skin is exposed? ')
         for i in raw_exposure:
             if i == '%':
-                raw_exposure = raw_exposure[:len(raw_exposure)-1]
+                raw_exposure = raw_exposure[:len(raw_exposure) - 1]
         try:
             skin_exposure = float(raw_exposure)
             exposure = True
@@ -58,5 +55,6 @@ def calculate_uv():
 
     user.get_time()
     user.get_burn()
+
 
 calculate_uv()
