@@ -38,7 +38,7 @@ def calculate_uv():
             skin_exposure = float(raw_exposure)
             exposure = True
         except ValueError:
-            print 'Answer not valid. Please retry'
+            print 'Answer not valid. Please retry.'
 
     while skin_exposure >= 100:
         skin_exposure = float(raw_input('Answer not valid. What % of your skin is exposed? '))
@@ -49,7 +49,7 @@ def calculate_uv():
             uv_index = float(raw_input('What is the current UV index of your city? '))
             uv = True
         except ValueError:
-            print 'Answer not valid. Please retry'
+            print 'Answer not valid. Please retry.'
 
     user = Skin(skin_type, skin_exposure, uv_index)
 
