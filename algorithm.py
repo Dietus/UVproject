@@ -17,6 +17,13 @@ class Skin(object):
         hours_needed = time/3600
         print 'You need %s hours %s minutes and %s seconds of sunlight every other day to get your recommended Vit D dose.' % (hours_needed, minutes_needed, seconds_needed)
 
+    def get_burn(self):
+        time = int(4*(self.skin_type/(self.uv_index/40)))
+        seconds_needed = time % 60
+        minutes_needed = (time % 3600)/60
+        hours_needed = time/3600
+        print 'You need a minimum %s hours %s minutes and %s seconds of sunlight to burn.' % (hours_needed, minutes_needed, seconds_needed)
+
 
 def calculate_uv():
     raw_type = raw_input('What is your Fitzpatrick skin type (I-VI)? ').upper()
@@ -50,5 +57,6 @@ def calculate_uv():
     user = Skin(skin_type, skin_exposure, uv_index)
 
     user.get_time()
+    user.get_burn()
 
 calculate_uv()
