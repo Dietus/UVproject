@@ -23,7 +23,7 @@ class Skin(object):
         if self.skin_exposure == 0:
             print 'You need to have skin exposed to be burnt'
         else:
-            time = int(4 * (self.skin_type / (self.uv_index / 40)))
+            time = int(2 * (self.skin_type / (self.uv_index / 40)))
             seconds_needed = time % 60
             minutes_needed = (time % 3600) / 60
             hours_needed = time / 3600
@@ -36,7 +36,7 @@ def calculate_uv():
         raw_type = raw_input('Answer not valid. What is your Fitzpatrick skin type (I-VI)? ').upper()
     skin_type = fitzpatrick[raw_type]
 
-    skin_exposure = 0
+    skin_exposure = 0  # asks about each individual skin area and adds all the percentages from skin_area dictionary
     for i in skin_area:
         area = raw_input(i + ' exposed?(Y/N) ').upper()
         while area not in answers:
